@@ -1,0 +1,63 @@
+/* ===== Interactive grid background (sits behind everything) ===== */
+#gridCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* behind all page content */
+    pointer-events: none;
+    /* never blocks clicks on your site */
+}
+
+/* Mascots: fixed at top center, purely decorative */
+#gridMascot {
+    position: fixed;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 60;
+    /* above the nav (z-index: 50) */
+    pointer-events: none;
+    /* clicks pass through to the nav/links */
+}
+
+#gridMascot img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(120, 190, 240, .35);
+    background: #0e284a;
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, .55));
+    transform-origin: center;
+    transition: transform .1s ease-out;
+    will-change: transform;
+}
+
+@media (max-width: 480px) {
+    #gridMascot {
+        gap: 6px;
+        top: 10px;
+    }
+
+    #gridMascot img {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* Very small phones: keep clear of the PROBSTA logo on the left */
+@media (max-width: 400px) {
+    #gridMascot {
+        gap: 4px;
+    }
+
+    #gridMascot img {
+        width: 36px;
+        height: 36px;
+        border-width: 2px;
+    }
+}
